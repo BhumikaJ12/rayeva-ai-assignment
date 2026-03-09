@@ -1,217 +1,240 @@
-Rayeva AI Systems Assignment:
+# 🌱 **Rayeva AI Backend Assignment**
 
-Overview
+<u>AI-powered backend system for sustainable product categorization and proposal generation.</u>
 
-This project implements AI-powered backend modules for a sustainable commerce platform.
-The goal is to reduce manual catalog work, generate B2B proposals, and integrate AI into real business workflows.
+---
 
-Two modules are fully implemented with production-style architecture.
+## **📌 Project Overview**
 
-Tech Stack
+This project implements a **Node.js + Express backend** that integrates with the **OpenAI API** to generate intelligent outputs for sustainable product businesses.
 
-Backend:
+The system can:
 
-Node.js
-Express
-MongoDB (Atlas)
-OpenAI API
+* Automatically **categorize eco-friendly products**
+* Generate **SEO tags and sustainability filters**
+* Create **business proposals based on client needs and budget**
+* Store **AI prompts and results in MongoDB**
 
-Architecture:
+---
 
-Controller → Service → Prompt → AI → Database
+## **⚙️ Tech Stack**
 
-Implemented Modules
+**Backend**
 
-Module 1 — AI Auto Category & Tag Generator
+* **Node.js**
+* **Express.js**
 
-This module automatically categorizes sustainable products.
+**Database**
 
-Input:
+* **MongoDB Atlas**
+* **Mongoose**
 
-Product Name
-Product Description
+**AI Integration**
 
-AI generates:
+* **OpenAI API**
 
-Primary category
-Sub category
-5–10 SEO tags
-Sustainability filters
+**Development Tools**
 
-Example output:
+* Nodemon
+* dotenv
+* Git & GitHub
 
-{
- "primary_category": "Personal Care",
- "sub_category": "Oral Care",
- "seo_tags": ["bamboo toothbrush","eco toothbrush"],
- "sustainability_filters": ["plastic-free","compostable"]
-}
+---
 
-Features:
+## **📂 Project Structure**
 
-Structured JSON output
-Stored in MongoDB
-Prompt + response logging
+```bash
+rayeva-ai-assignment
+│
+├── backend
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   ├── services
+│   ├── utils
+│   ├── prompts
+│   ├── app.js
+│   ├── package.json
+│   └── .env
+│
+├── .gitignore
+└── README.md
+```
 
-Module 2 — AI B2B Proposal Generator
+---
 
-This module generates sustainable procurement proposals for business clients.
+## **🚀 Installation & Setup**
 
-Input:
+### **1️⃣ Clone the repository**
 
-Client Type
-Budget
-Goal
+```bash
+git clone https://github.com/YOUR_USERNAME/rayeva-ai-assignment.git
+cd rayeva-ai-assignment/backend
+```
 
-AI generates:
+---
 
-Recommended sustainable products
-Budget allocation
-Cost breakdown
-Environmental impact summary
+### **2️⃣ Install dependencies**
 
-Example output:
-
-{
- "recommended_products": [...],
- "budget_summary":{
-  "total_cost": 2625,
-  "remaining_budget": 2375
- },
- "impact_summary":"..."
-}
-
-Features:
-
-Budget-aware AI recommendations
-Stored proposal history
-Prompt logging
-
-Architecture:
-
-System design follows separation of AI and business logic.
-
-Client Request
-     ↓
-API Route
-     ↓
-Controller
-     ↓
-Prompt Generator
-     ↓
-AI Service (OpenAI)
-     ↓
-Structured JSON Response
-     ↓
-Database Storage
-     ↓
-Response to Client
-Prompt Engineering Strategy
-
-Prompts are designed to enforce structured JSON outputs.
-
-Key strategies:
-
-Explicit JSON schema
-Clear constraints (budget limits)
-Domain-specific instructions
-Low temperature for deterministic outputs
-
-Example prompt structure:
-
-Return STRICT JSON in this format:
-{
- "recommended_products":[...],
- "budget_summary":{},
- "impact_summary":""
-}
-Database Collections
-
-MongoDB stores:
-
-products
-proposals
-promptlogs
-
-promptlogs capture:
-
-module
-prompt
-response
-timestamp
-Architecture Design for Remaining Modules
-
-Module 3 — AI Impact Reporting Generator
-
-Proposed architecture:
-
-Order data
-   ↓
-Impact calculation engine
-   ↓
-AI summarization
-   ↓
-Impact report stored with order
-
-Metrics calculated:
-
-Plastic saved
-Carbon emissions avoided
-Local sourcing impact
-
-Module 4 — AI WhatsApp Support Bot
-
-Proposed architecture:
-
-WhatsApp message
-   ↓
-Twilio webhook
-   ↓
-Intent detection using AI
-   ↓
-Database queries for order data
-   ↓
-Automated or human response
-
-Capabilities:
-
-Order status queries
-Return policy questions
-Refund escalation
-Conversation logging
-Running the Project
-
-Install dependencies:
-
+```bash
 npm install
+```
 
-Start server:
+---
 
+### **3️⃣ Create `.env` file**
+
+Inside the **backend folder**, create a `.env` file:
+
+```env
+OPENAI_API_KEY=your_openai_api_key
+MONGO_URI=your_mongodb_connection_string
+PORT=5000
+```
+
+---
+
+### **4️⃣ Run the server**
+
+```bash
 npm run dev
-Example API Requests
-Category Generator
+```
 
-POST
+Server will start on:
 
-/api/ai/category
+```
+http://localhost:5000
+```
 
-Body:
+---
 
+## **🧠 AI Features**
+
+### **1️⃣ AI Product Category Generator**
+
+This API analyzes product details and generates:
+
+* Primary Category
+* Sub Category
+* SEO Tags
+* Sustainability Filters
+
+Example output:
+
+```json
 {
- "name": "Bamboo Toothbrush",
- "description": "Eco friendly toothbrush"
+  "primary_category": "Personal Care",
+  "sub_category": "Oral Care",
+  "seo_tags": [
+    "bamboo toothbrush",
+    "eco friendly toothbrush",
+    "sustainable oral care"
+  ],
+  "sustainability_filters": [
+    "plastic-free",
+    "compostable",
+    "vegan"
+  ]
 }
+```
 
-B2B Proposal Generator
+---
 
-POST
+### **2️⃣ AI Business Proposal Generator**
 
-/api/ai/proposal
+This feature generates **product recommendations based on client needs and budget**.
 
-Body:
+Example input:
 
+```json
 {
- "client_type": "Eco-friendly Hotel",
- "budget": 5000,
- "goal": "Replace single-use plastics"
+  "client_type": "Eco-friendly Hotel",
+  "budget": 5000,
+  "goal": "Replace single-use plastics"
 }
+```
+
+Example output includes:
+
+* Recommended products
+* Quantity suggestions
+* Budget summary
+* Sustainability impact explanation
+
+---
+
+## **📡 API Endpoints**
+
+### **Generate Product Category**
+
+```
+POST /api/ai/category
+```
+
+Example request:
+
+```bash
+curl -X POST http://localhost:5000/api/ai/category \
+-H "Content-Type: application/json" \
+-d '{
+"name":"Bamboo Toothbrush",
+"description":"Eco friendly toothbrush made from bamboo"
+}'
+```
+
+---
+
+### **Generate Business Proposal**
+
+```
+POST /api/ai/proposal
+```
+
+Example request:
+
+```bash
+curl -X POST http://localhost:5000/api/ai/proposal \
+-H "Content-Type: application/json" \
+-d '{
+"client_type":"Eco-friendly Hotel",
+"budget":5000,
+"goal":"Replace single-use plastics"
+}'
+```
+
+---
+
+## **🗄 Database**
+
+The project uses **MongoDB Atlas**.
+
+Collections created:
+
+* **products** → stores product data
+* **promptlogs** → stores AI prompts and responses
+* **proposals** → stores generated business proposals
+
+---
+
+## **🎥 Demo**
+
+A demo video explaining:
+
+* Project structure
+* API functionality
+* MongoDB integration
+* AI responses
+
+will be provided with the assignment submission.
+
+---
+
+## **👩‍💻 Author**
+
+**Bhumika**
+
+AI Backend Assignment – Rayeva
+
+---
+
+## ⭐ **Thank You**
