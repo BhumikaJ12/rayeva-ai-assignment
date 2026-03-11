@@ -4,7 +4,7 @@
 
 ---
 
-## **📌 Project Overview**
+## 📌 **Project Overview**
 
 This project implements a **Node.js + Express backend** that integrates with the **OpenAI API** to generate intelligent outputs for sustainable product businesses.
 
@@ -17,23 +17,23 @@ The system can:
 
 ---
 
-## **⚙️ Tech Stack**
+## ⚙️ **Tech Stack**
 
-**Backend**
+### **Backend**
 
 * **Node.js**
 * **Express.js**
 
-**Database**
+### **Database**
 
 * **MongoDB Atlas**
 * **Mongoose**
 
-**AI Integration**
+### **AI Integration**
 
 * **OpenAI API**
 
-**Development Tools**
+### **Development Tools**
 
 * Nodemon
 * dotenv
@@ -41,7 +41,7 @@ The system can:
 
 ---
 
-## **📂 Project Structure**
+## 📂 **Project Structure**
 
 ```bash
 rayeva-ai-assignment
@@ -63,12 +63,79 @@ rayeva-ai-assignment
 
 ---
 
-## **🚀 Installation & Setup**
+# 🏗 **System Architecture**
+
+The backend follows a **clean modular architecture** that separates AI logic from business logic.
+
+```
+Client Request
+      │
+      ▼
+API Routes (Express)
+      │
+      ▼
+Controllers
+      │
+      ▼
+Prompt Generator
+      │
+      ▼
+AI Service (OpenAI API)
+      │
+      ▼
+Structured JSON Response
+      │
+      ▼
+MongoDB Database Storage
+      │
+      ▼
+API Response to Client
+```
+
+### **Architecture Components**
+
+**Routes**
+
+* Handle incoming API requests
+* Forward requests to controllers
+
+**Controllers**
+
+* Manage request and response flow
+* Connect AI services with database operations
+
+**Prompts**
+
+* Generate structured prompts for the AI model
+* Ensure consistent JSON outputs
+
+**AI Service**
+
+* Communicates with the OpenAI API
+* Returns generated responses
+
+**Database (MongoDB)**
+
+Stores:
+
+* Products
+* Proposals
+* Prompt logs
+
+This separation ensures:
+
+* **Maintainability**
+* **Scalability**
+* **Clear AI-business logic separation**
+
+---
+
+## 🚀 **Installation & Setup**
 
 ### **1️⃣ Clone the repository**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/rayeva-ai-assignment.git
+git clone https://github.com/BhumikaJ12/rayeva-ai-assignment.git
 cd rayeva-ai-assignment/backend
 ```
 
@@ -108,9 +175,9 @@ http://localhost:5000
 
 ---
 
-## **🧠 AI Features**
+# 🧠 **AI Features**
 
-### **1️⃣ AI Product Category Generator**
+## **1️⃣ AI Product Category Generator**
 
 This API analyzes product details and generates:
 
@@ -140,7 +207,7 @@ Example output:
 
 ---
 
-### **2️⃣ AI Business Proposal Generator**
+## **2️⃣ AI Business Proposal Generator**
 
 This feature generates **product recommendations based on client needs and budget**.
 
@@ -163,9 +230,9 @@ Example output includes:
 
 ---
 
-## **📡 API Endpoints**
+# 📡 **API Endpoints**
 
-### **Generate Product Category**
+## **Generate Product Category**
 
 ```
 POST /api/ai/category
@@ -184,7 +251,7 @@ curl -X POST http://localhost:5000/api/ai/category \
 
 ---
 
-### **Generate Business Proposal**
+## **Generate Business Proposal**
 
 ```
 POST /api/ai/proposal
@@ -204,7 +271,7 @@ curl -X POST http://localhost:5000/api/ai/proposal \
 
 ---
 
-## **🗄 Database**
+# 🗄 **Database**
 
 The project uses **MongoDB Atlas**.
 
@@ -216,7 +283,7 @@ Collections created:
 
 ---
 
-## **🎥 Demo**
+# 🎥 **Demo**
 
 A demo video explaining:
 
@@ -229,7 +296,7 @@ will be provided with the assignment submission.
 
 ---
 
-## **👩‍💻 Author**
+# 👩‍💻 **Author**
 
 **Bhumika**
 
@@ -237,4 +304,4 @@ AI Backend Assignment – Rayeva
 
 ---
 
-## ⭐ **Thank You**
+# ⭐ **Thank You**
