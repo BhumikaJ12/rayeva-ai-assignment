@@ -230,6 +230,78 @@ Example output includes:
 
 ---
 
+# ♻️ **Architecture for Additional Modules**
+
+The assignment requires implementing two modules and outlining the architecture for the remaining modules.
+
+---
+
+## Module 3 — AI Impact Reporting Generator
+
+This module would generate environmental impact reports for completed orders.
+
+### Proposed Architecture
+
+```
+Order Data (products + quantities)
+        │
+        ▼
+Impact Calculation Logic
+(plastic saved, carbon avoided)
+        │
+        ▼
+AI Summarization
+        │
+        ▼
+Human-readable impact report
+        │
+        ▼
+Stored with order in MongoDB
+```
+
+### Example Output
+
+```json
+{
+  "plastic_saved_kg": 12,
+  "carbon_avoided_kg": 72,
+  "impact_statement": "This order helped prevent 12kg of plastic waste and avoided approximately 72kg of carbon emissions."
+}
+```
+
+---
+
+## Module 4 — AI WhatsApp Support Bot
+
+This module would provide AI-powered customer support through WhatsApp.
+
+### Proposed Architecture
+
+```
+Customer Message (WhatsApp)
+        │
+        ▼
+Twilio WhatsApp API
+        │
+        ▼
+Backend Webhook
+        │
+        ▼
+AI Intent Detection
+        │
+        ├── Order Status → Query MongoDB
+        ├── Return Policy → FAQ Response
+        └── Refund Issue → Escalate to Support
+        │
+        ▼
+Response sent to WhatsApp
+        │
+        ▼
+Conversation logged in database
+```
+
+This system would allow businesses to automate customer support while maintaining human escalation for complex cases.
+
 # 📡 **API Endpoints**
 
 ## **Generate Product Category**
